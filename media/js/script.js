@@ -64,21 +64,6 @@ var usernameAvailability = function() {
     });
 };
 
-var openidHandlers = function() {
-    var oneClick = {
-        'google': 'https://www.google.com/accounts/o8/id',
-        'yahoo': 'https://yahoo.com',
-        'myopenid': 'https://www.myopenid.com'
-    };
-    $.each(oneClick, function(key, value) {
-        $('.openid_providers #' + key).bind('click', function(e) {
-            e.preventDefault();
-            $('#id_openid_identifier').val(value);
-            $('#id_openid_identifier').parent().submit();
-        });
-    });
-};
-
 var loadMoreMessages = function() {
     $('a#inbox_more').bind('click', function(e) {
         e.preventDefault();
@@ -166,16 +151,7 @@ var batucada = {
             usernameAvailability();
         }
     },
-    signup_openid: {
-        onload: function() {
-            openidHandlers();
-        }
-    },
-    signin_openid: {
-        onload: function() {
-            openidHandlers();
-        }
-    },
+
     dashboard: {
         onload: function() {
             createPostTextArea();

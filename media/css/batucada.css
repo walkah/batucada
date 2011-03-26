@@ -38,9 +38,6 @@ p {
 	line-height: 1.4;
 	margin-bottom: 1.4em;
 }
-a.openid {
-	background: url(/media/images/openid-22x25.png) 0 0 no-repeat;	padding-left: 27px;
-	}
 
 img.member-picture,
 img.project.picture,
@@ -1154,7 +1151,7 @@ header {}
 	#profile_edit {}
 		.modal{
 			position: relative;
-			width: 590px;
+			width: 590px; 
 			margin: 0 auto;
 			padding: 6px;
 			box-shadow: rgba(255, 255, 255, 0.2) 1px 1px 0px inset, rgba(0,0,0,0.25) 3px 3px 5px;
@@ -1754,7 +1751,7 @@ header {}
 .signin .modal{
 	padding: 10px;
 	margin-bottom: 72px;
-	width: 420px;
+	width: 650px;
 	font-size: 14px;
 	line-height: 18px;
 	border: none;
@@ -1768,7 +1765,7 @@ header {}
 	border: none;
 	}
 .signin .modal fieldset {
-	width: 348px;
+	width: 600px;
 	}	
 .signin .modal article >h1 {
 	width: auto;

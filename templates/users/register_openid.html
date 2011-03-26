@@ -1,17 +1,43 @@
 {% extends "base.html" %}
 {% load l10n_tags %}
 {% block title %}{{ _('Sign Up') }}{% endblock %}
+
+{% block links %} 
+<link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}css/openid.css" />
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript" src="{{ MEDIA_URL }}js/libs/openid-jquery.js"></script>
+<script type="text/javascript" src="{{ MEDIA_URL }}js/libs/openid-en.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+  openid.img_path = '{{ MEDIA_URL}}/images/';
+	openid.init('openid_identifier');
+});
+</script>
+{% endblock %}
+
 {% block bodyid %}signup_openid{% endblock %}
-{% block bodyclasses %}signin openid{% endblock %}
+{% block bodyclasses %}signin{% endblock %}
 {% block body %}
 <section class="modal">
   <article>
     <h1>{{ _('Create a New Account') }} <span class="pester">{{  _('or') }} <a href="{% locale_url users_login %}">{{_('sign in')}}</a></span></h1>
     {% if message %}<p>{{ message }}</p>{% endif %}
     <fieldset>
-      <form action="{% locale_url users_register_openid %}" method="post">
+      <form id="openid_form" action="{% locale_url users_register_openid %}" method="post">
         {% csrf_token %}
-        {% include "users/_openid_providers.html" %}
+			  <div id="openid_choice">
+				  <div id="openid_btns"></div>
+			  </div>
+			  <div id="openid_input_area">
+				  <input id="openid_identifier" name="openid_identifier" type="text" value="http://" />
+				  <input id="openid_submit" type="submit" value="Sign-In"/>
+			  </div>
+			  <noscript>
+				  <p>OpenID is service that allows you to log-on to many different websites using a single indentity.
+				    Find out <a href="http://openid.net/what/">more about OpenID</a> and <a href="http://openid.net/get/">how to get an OpenID enabled account</a>.</p>
+			  </noscript>
       </form>
     </fieldset>
   </article>
